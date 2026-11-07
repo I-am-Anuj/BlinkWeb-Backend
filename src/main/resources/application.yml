@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: blinkweb-library-service
+  datasource:
+    url: jdbc:h2:mem:blinkweb_library;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    open-in-view: false
+  mail:
+    host: smtp.gmail.com
+    port: 587
+    username: ${MAIL_USERNAME:your-email@gmail.com}
+    password: ${MAIL_APP_PASSWORD:your-app-password}
+    properties:
+      mail:
+        smtp:
+          auth: true
+          starttls:
+            enable: true
+
+server:
+  port: 8081
+
+# Blinkweb Core Platform Configuration
+blinkweb:
+  core:
+    backend-url: https://core.blinkweb.io
+    api-key: dev-secret-key
+    cache-ttl-seconds: 60
+  jwt:
+    secret: ${JWT_SECRET:BlinkWebSuperSecretKeyForJwtSigningMustBeAtLeast256BitsLong!}
+    expiration-ms: 86400000 # 24 hours
+  multitenancy:
+    header-name: X-Tenant-ID
+    root-domains:
+      - blinkweb.com
+      - blinkweb.io
+      - localhost
