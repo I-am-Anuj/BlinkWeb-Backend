@@ -43,3 +43,4 @@ Application configurations are available in `src/main/resources/application.yml`
 - Tenant headers (`X-Tenant-ID`)
 - Mail credentials (`MAIL_USERNAME`, `MAIL_APP_PASSWORD`)
 - JWT secret (`JWT_SECRET`)
+
